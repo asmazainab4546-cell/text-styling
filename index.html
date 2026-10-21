@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Text Styler</title>
+<style>
+body { font-family: Arial; text-align: center; background: white; color: black; padding: 20px; }
+.dark { background: #222; color: white; }
+#textBox { border: 2px solid gray; padding: 30px; margin: 20px auto; width: 80%; background: white; color: black; }
+button { padding: 8px 12px; margin: 5px; cursor: pointer; }
+.controls { max-width: 900px; margin: auto; }
+</style>
+</head>
+<body>
+
+<h1>Interactive Text Styler</h1>
+<p id="textBox">This is sample text. Change my style using buttons!</p>
+
+<div class="controls">
+<h3>1. Text Color</h3>
+<button onclick="changeColor('red')">Red</button>
+<button onclick="changeColor('blue')">Blue</button>
+<button onclick="changeColor('green')">Green</button>
+
+<h3>2. Font Size</h3>
+<button onclick="changeSize(1)">Increase +</button>
+<button onclick="changeSize(-1)">Decrease -</button>
+
+<h3>3. Font Family</h3>
+<button onclick="changeFont('Arial')">Arial</button>
+<button onclick="changeFont('Georgia')">Georgia</button>
+<button onclick="changeFont('Courier New')">Courier</button>
+
+<h3>4. Text Decoration</h3>
+<button onclick="decoration('underline')">Underline</button>
+<button onclick="decoration('overline')">Overline</button>
+<button onclick="decoration('line-through')">Line Through</button>
+<button onclick="decoration('none')">Remove Decoration</button>
+
+<h3>5. Bold & Italic</h3>
+<button onclick="makeBold()">Bold</button>
+<button onclick="makeItalic()">Italic</button>
+
+<h3>6. Text Alignment</h3>
+<button onclick="alignText('left')">Left</button>
+<button onclick="alignText('center')">Center</button>
+<button onclick="alignText('right')">Right</button>
+
+<h3>7. Uppercase / Lowercase</h3>
+<button onclick="changeCase('uppercase')">UPPERCASE</button>
+<button onclick="changeCase('lowercase')">lowercase</button>
+
+<h3>8. Background Color</h3>
+<button onclick="changeBg('yellow')">Yellow</button>
+<button onclick="changeBg('lightblue')">Light Blue</button>
+<button onclick="changeBg('lightpink')">Pink</button>
+<button onclick="changeBg('white')">White</button>
+
+<h3>9. Dark / Light Mode</h3>
+<button onclick="toggleMode()">Toggle Dark/Light</button>
+
+<h3>10. Reset</h3>
+<button onclick="resetAll()" style="background:red; color:white;">Reset</button>
+</div>
+
+<script>
+let text = document.getElementById("textBox");
+let size = 20;
+text.style.fontSize = size + "px";
+let originalBg = document.body.style.background;
+
+function changeColor(c){ text.style.color = c; }
+function changeSize(n){ size += n*2; text.style.fontSize = size + "px"; }
+function changeFont(f){ text.style.fontFamily = f; }
+function decoration(d){ text.style.textDecoration = d; }
+function makeBold(){ text.style.fontWeight = text.style.fontWeight == "bold" ? "normal" : "bold"; }
+function makeItalic(){ text.style.fontStyle = text.style.fontStyle == "italic" ? "normal" : "italic"; }
+function alignText(a){ text.style.textAlign = a; }
+function changeCase(c){ text.style.textTransform = c; }
+function changeBg(c){ text.style.backgroundColor = c; }
+function toggleMode(){ document.body.classList.toggle("dark"); }
+function resetAll(){
+ text.style = ""; size=20; text.style.fontSize="20px"; text.style.background="white"; text.style.color="black";
+ document.body.classList.remove("dark");
+}
+</script>
+
+</body>
+</html>
